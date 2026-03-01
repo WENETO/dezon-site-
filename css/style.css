@@ -1091,4 +1091,126 @@ p { margin-bottom: 1rem; color: var(--text-dark); }
     .stat-number {
         font-size: 1.8rem;
     }
+
+}
+
+
+
+/* ===== ИСПРАВЛЕНИЯ ПО ЗАДАНИЮ ===== */
+
+/* 1. МОДАЛЬНЫЕ ОКНА - чёрный фон, белый текст */
+#orderModal .modal__content,
+#consultModal .modal__content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    color: #ffffff !important;
+}
+
+#orderModal *,
+#consultModal * {
+    color: #ffffff !important;
+}
+
+#orderModal input,
+#consultModal input,
+#orderModal textarea,
+#consultModal textarea,
+#orderModal select,
+#consultModal select {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555 !important;
+}
+
+#orderModal input::placeholder,
+#consultModal input::placeholder,
+#orderModal textarea::placeholder,
+#consultModal textarea::placeholder {
+    color: #aaaaaa !important;
+}
+
+#orderModal .checkbox-text,
+#consultModal .checkbox-text,
+#orderModal .form-note,
+#consultModal .form-note {
+    color: #ffffff !important;
+}
+
+#orderModal a,
+#consultModal a {
+    color: #0c8346 !important;
+}
+
+#orderModal .btn--primary,
+#consultModal .btn--primary {
+    background: linear-gradient(135deg, #0c8346 0%, #0a6c3a 100%) !important;
+    color: #ffffff !important;
+}
+
+/* 2. СТРАНИЦА УСЛУГ */
+body.services-page,
+.services-page {
+    background-color: #f8f9fa !important;
+}
+
+.services-page .pricing-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    color: #ffffff !important;
+}
+
+.services-page .pricing-card * {
+    color: #ffffff !important;
+}
+
+.services-page .pricing-card h3,
+.services-page .pricing-card .pricing-card__title {
+    color: #ffffff !important;
+}
+
+.services-page .pricing-card .pricing-features li {
+    color: #ffffff !important;
+}
+
+.services-page .pricing-card .pricing-features li:before {
+    color: #ff9800 !important;
+}
+
+.services-page .pricing-details {
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFFDE7 100%) !important;
+    color: #000000 !important;
+}
+
+.services-page .pricing-details * {
+    color: #000000 !important;
+}
+
+.services-page .pricing-details h4 {
+    color: #0c8346 !important;
+}
+
+.services-page .pricing-details li span:last-child {
+    color: #0c8346 !important;
+}
+
+/* 3. СТРАНИЦА ОРГАНИЗАЦИЯМ */
+body.organizations-page,
+.organizations-page {
+    background-color: #f8f9fa !important;
+}
+
+/* Раздел "Документы и сертификаты" - чёрный фон */
+.organizations-page .org-section:has(.org-docs-grid) {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    padding: 60px 0 !important;
+}
+
+.organizations-page .org-section:has(.org-docs-grid) h2 {
+    color: #ffffff !important;
+}
+
+.organizations-page .org-section:has(.org-docs-grid) h2:after {
+    background-color: #ff9800 !important;
+}
+
+.organizations-page .org-section:has(.org-docs-grid) p {
+    color: #ffffff !important;
 }
