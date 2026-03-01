@@ -115,6 +115,40 @@
     </style>
 </head>
 <body>
+
+    <!-- ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ МОДАЛЬНЫХ ОКОН -->
+<style>
+    #orderModal .modal__content,
+    #consultModal .modal__content {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    }
+    
+    #orderModal *:not(button):not(.btn),
+    #consultModal *:not(button):not(.btn) {
+        color: #ffffff !important;
+    }
+    
+    #orderModal input,
+    #consultModal input,
+    #orderModal textarea,
+    #consultModal textarea {
+        background-color: #333333 !important;
+        color: #ffffff !important;
+        border-color: #555555 !important;
+    }
+    
+    #orderModal input::placeholder,
+    #consultModal input::placeholder,
+    #orderModal textarea::placeholder,
+    #consultModal textarea::placeholder {
+        color: #aaaaaa !important;
+    }
+    
+    #orderModal .checkbox-text,
+    #consultModal .checkbox-text {
+        color: #ffffff !important;
+    }
+</style>
     <!-- Анимированный фон с паутинкой -->
     <div class="web-background">
         <div class="web-line web-1"></div>
@@ -871,4 +905,5 @@
         });
     </script>
 </body>
+
 </html>
