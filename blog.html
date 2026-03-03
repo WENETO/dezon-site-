@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Полезные статьи о дезинсекции и дератизации | DEZ-ONE</title>
     <meta name="description" content="Статьи о борьбе с вредителями, методах профилактики, советы специалистов.">
     <link rel="stylesheet" href="css/style.css?v=5.0">
@@ -160,6 +161,15 @@
             gap: 10px;
         }
         
+        .blog-post__link:after {
+            content: '→';
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post__link:hover:after {
+            transform: translateX(5px);
+        }
+        
         .faq-section {
             margin-top: 80px;
             position: relative;
@@ -172,6 +182,18 @@
             color: #ffffff !important;
             position: relative;
             font-size: 2rem;
+        }
+        
+        .faq-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ff9800;
+            border-radius: 2px;
         }
         
         .faq-list {
@@ -207,6 +229,7 @@
             transform: translateY(-50%);
             font-size: 1.5rem;
             color: #0c8346;
+            transition: all 0.3s ease;
         }
         
         .faq-item[open] .faq-question:after {
@@ -222,6 +245,11 @@
             background-color: rgba(232, 245, 233, 0.3);
         }
         
+        .faq-answer p {
+            margin: 0;
+            color: #333;
+        }
+        
         .subscribe {
             padding: 100px 0;
             background: linear-gradient(135deg, #0c8346 0%, #0a6c3a 100%);
@@ -232,10 +260,29 @@
             z-index: 2;
         }
         
+        .subscribe:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .subscribe-content {
+            position: relative;
+            z-index: 1;
+        }
+        
         .subscribe-content h2 {
             color: #ffffff;
             font-size: 2.5rem;
             margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .subscribe-content p {
@@ -244,6 +291,16 @@
             opacity: 0.9;
             font-size: 1.2rem;
             color: #ffffff;
+        }
+        
+        .subscribe-telegram {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
         
         .telegram-link {
@@ -259,11 +316,32 @@
             margin-top: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
         .telegram-link:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 10px 25px rgba(0, 136, 204, 0.5);
+        }
+        
+        .telegram-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .telegram-link:hover:before {
+            left: 100%;
+        }
+        
+        .telegram-icon {
+            font-size: 1.8rem;
         }
         
         .subscribe-form {
@@ -278,9 +356,17 @@
             padding: 15px 20px;
             border: none;
             border-radius: 8px;
+            font-family: inherit;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
             color: #1a1a1a;
+        }
+        
+        .subscribe-form input:focus {
+            background: #ffffff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
         
         .subscribe-form button {
@@ -299,6 +385,18 @@
             transform: translateY(-2px);
         }
         
+        .subscribe-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 15px;
+            color: #ffffff;
+        }
+        
+        .memo-button {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
         .memo-button .btn {
             background: linear-gradient(135deg, #ff9800 0%, #e68900 100%);
             color: #000000;
@@ -308,6 +406,9 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
         }
         
         .memo-button .btn:hover {
@@ -328,9 +429,46 @@
         .consent-link:hover {
             color: #0a6c3a;
         }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .subscribe-form {
+                flex-direction: column;
+            }
+            .subscribe-content h2 {
+                font-size: 2rem;
+            }
+            .faq-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 60px 0;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .blog-post__content {
+                padding: 20px;
+            }
+            .blog-post__title {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
+
     <!-- ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ МОДАЛЬНЫХ ОКОН -->
 <style>
     #orderModal .modal__content,
@@ -364,7 +502,6 @@
         color: #ffffff !important;
     }
 </style>
-
 
     <!-- Анимированный фон с паутинкой -->
     <div class="web-background">
@@ -406,6 +543,7 @@
         <div class="bg-shine"></div>
     </div>
 
+    <!-- Шапка сайта -->
     <header class="header">
         <div class="container header__container">
             <a href="index.html" class="logo">
@@ -437,6 +575,7 @@
     </header>
 
     <main class="blog-page">
+        <!-- Заголовок страницы -->
         <section class="page-header">
             <div class="container">
                 <h1 class="animate-on-scroll" data-animation="fadeInUp">Полезные статьи</h1>
@@ -444,10 +583,11 @@
             </div>
         </section>
 
+        <!-- Сетка статей -->
         <section class="blog-content">
             <div class="container">
                 <div class="blog-grid">
-                    <!-- Статья 1 -->
+                    <!-- Статья 1 - Тараканы -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🪳</div>
@@ -460,11 +600,11 @@
                                 <span class="date">15 апреля 2024</span>
                                 <span class="read-time">7 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-cockroaches.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
 
-                    <!-- Статья 2 -->
+                    <!-- Статья 2 - Клопы -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn" data-delay="100">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🛏️</div>
@@ -477,11 +617,11 @@
                                 <span class="date">3 апреля 2024</span>
                                 <span class="read-time">6 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-bedbugs.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
 
-                    <!-- Статья 3 -->
+                    <!-- Статья 3 - Грызуны -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn" data-delay="200">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🐭</div>
@@ -494,11 +634,11 @@
                                 <span class="date">28 марта 2024</span>
                                 <span class="read-time">8 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-rodents.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
 
-                    <!-- Статья 4 -->
+                    <!-- Статья 4 - Муравьи -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn" data-delay="300">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🐜</div>
@@ -511,11 +651,11 @@
                                 <span class="date">20 марта 2024</span>
                                 <span class="read-time">5 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-ants.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
 
-                    <!-- Статья 5 -->
+                    <!-- Статья 5 - Дезинфекция -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn" data-delay="400">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🦠</div>
@@ -528,11 +668,11 @@
                                 <span class="date">12 марта 2024</span>
                                 <span class="read-time">6 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-disinfection.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
 
-                    <!-- Статья 6 -->
+                    <!-- Статья 6 - Пест-контроль для бизнеса -->
                     <article class="blog-post animate-on-scroll" data-animation="zoomIn" data-delay="500">
                         <div class="blog-post__image">
                             <div class="image-placeholder">🏢</div>
@@ -545,35 +685,37 @@
                                 <span class="date">5 марта 2024</span>
                                 <span class="read-time">9 мин чтения</span>
                             </div>
-                            <a href="#" class="blog-post__link">Читать статью</a>
+                            <a href="article-pest-control.html" class="blog-post__link">Читать статью</a>
                         </div>
                     </article>
                 </div>
 
-                <div class="memo-button animate-on-scroll" data-animation="fadeInUp" style="text-align: center; margin: 40px 0;">
-                    <a href="client-memo.html" class="btn btn--secondary btn--large">
+                <!-- Кнопка памятки клиенту -->
+                <div class="memo-button animate-on-scroll" data-animation="fadeInUp">
+                    <a href="client-memo.html" class="btn">
                         <i class="fas fa-file-alt"></i> Ознакомиться с памяткой клиенту
                     </a>
                 </div>
 
+                <!-- Часто задаваемые вопросы -->
                 <div class="faq-section">
                     <h2 class="text-center">Частые вопросы</h2>
                     <div class="faq-list">
                         <details class="faq-item animate-on-scroll" data-animation="fadeInUp">
                             <summary class="faq-question">Как подготовить квартиру к обработке?</summary>
                             <div class="faq-answer">
-                                <p>1. Упакуйте продукты, посуду и средства гигиены<br>
-                                2. Отодвиньте мебель от стен<br>
-                                3. Уберите постельное белье и одежду<br>
-                                4. Обеспечьте доступ к плинтусам и углам<br>
-                                5. Закройте аквариум и отключите компрессор</p>
+                                <p>1. Упакуйте продукты, посуду и средства гигиены в герметичные пакеты.<br>
+                                2. Отодвиньте мебель от стен, чтобы обеспечить доступ к плинтусам.<br>
+                                3. Уберите постельное белье и одежду в шкафы или пакеты.<br>
+                                4. Обеспечьте доступ к плинтусам, углам, вентиляции.<br>
+                                5. Закройте аквариум и отключите компрессор, уберите животных.</p>
                             </div>
                         </details>
 
                         <details class="faq-item animate-on-scroll" data-animation="fadeInUp" data-delay="100">
                             <summary class="faq-question">Безопасны ли препараты для детей и животных?</summary>
                             <div class="faq-answer">
-                                <p>Да, мы используем сертифицированные препараты 4 класса опасности. После обработки и проветривания (2-4 часа) помещение безопасно. Для аллергиков доступны гипоаллергенные средства.</p>
+                                <p>Да, мы используем сертифицированные препараты 4 класса опасности (малоопасные). После обработки и проветривания (2-4 часа) помещение полностью безопасно. Для аллергиков доступны гипоаллергенные средства без запаха. Во время обработки в помещении находиться нельзя, это стандартная мера безопасности.</p>
                             </div>
                         </details>
 
@@ -583,8 +725,21 @@
                                 <p>Да, все работы выполняются по договору с гарантией:<br>
                                 - Дезинсекция: 1 год<br>
                                 - Дератизация: 1 год<br>
-                                - Дезинфекция: зависит от типа обработки<br>
-                                В течение гарантийного срока - бесплатная повторная обработка.</p>
+                                - Дезинфекция: от 1 до 6 месяцев в зависимости от типа обработки<br>
+                                - Акарицидная обработка: 1 сезон<br>
+                                В течение гарантийного срока - бесплатная повторная обработка при необходимости.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item animate-on-scroll" data-animation="fadeInUp" data-delay="300">
+                            <summary class="faq-question">Сколько времени занимает обработка?</summary>
+                            <div class="faq-answer">
+                                <p>Время обработки зависит от площади помещения и типа вредителей:<br>
+                                - 1-комнатная квартира: 30-40 минут<br>
+                                - 2-комнатная: 40-60 минут<br>
+                                - 3-комнатная: 60-90 минут<br>
+                                - Частный дом: от 1,5 до 3 часов<br>
+                                После обработки необходимо покинуть помещение на 2-4 часа, затем проветрить.</p>
                             </div>
                         </details>
                     </div>
@@ -592,6 +747,7 @@
             </div>
         </section>
 
+        <!-- Секция подписки -->
         <section class="subscribe">
             <div class="container">
                 <div class="subscribe-content">
@@ -603,12 +759,13 @@
                             <span class="telegram-icon">📱</span>
                             <span>Подписаться на наш канал</span>
                         </a>
+                        <p class="subscribe-note">Бесплатные советы, актуальные акции, ответы на вопросы</p>
                     </div>
                     
                     <p class="subscribe-note animate-on-scroll" data-animation="fadeInUp" data-delay="600">Или оставьте email для получения статей на почту</p>
                     <form class="subscribe-form animate-on-scroll" data-animation="fadeInUp" data-delay="800">
                         <input type="email" placeholder="Ваш email" required>
-                        <button type="submit" class="btn btn--primary">Подписаться</button>
+                        <button type="submit">Подписаться</button>
                     </form>
                 </div>
             </div>
@@ -766,6 +923,56 @@
                 
                 <p class="form-note" style="font-size: 0.9rem; color: #5a6268; text-align: center; margin-top: 15px;">
                     Отзыв будет опубликован после модерации
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для юридических лиц -->
+    <div class="modal" id="orgConsultModal">
+        <div class="modal__content" style="max-width: 600px; width: 90%; padding: 40px;">
+            <button class="modal__close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal__title" style="font-size: 2rem; margin-bottom: 10px; color: #0c8346;">Консультация для юр.лиц</h3>
+            <p class="modal__text" style="font-size: 1.1rem; margin-bottom: 30px; color: #5a6268;">Менеджер свяжется с вами в течение 15 минут для подготовки коммерческого предложения</p>
+            
+            <form id="orgConsultForm" class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="form-group" style="width: 100%;">
+                    <label for="orgName" style="font-weight: 600; margin-bottom: 8px; display: block; color: #333;">Название организации <span style="color: #ff0000;">*</span></label>
+                    <input type="text" id="orgName" name="organization" placeholder="ООО 'Компания'" required 
+                           style="width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+                
+                <div class="form-group" style="width: 100%;">
+                    <label for="orgContactName" style="font-weight: 600; margin-bottom: 8px; display: block; color: #333;">Контактное лицо <span style="color: #ff0000;">*</span></label>
+                    <input type="text" id="orgContactName" name="name" placeholder="Иванов Иван Иванович" required 
+                           style="width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+                
+                <div class="form-group" style="width: 100%;">
+                    <label for="orgPhone" style="font-weight: 600; margin-bottom: 8px; display: block; color: #333;">Номер телефона <span style="color: #ff0000;">*</span></label>
+                    <input type="tel" id="orgPhone" name="phone" placeholder="+7 (___) ___-__-__" required 
+                           style="width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+                
+                <div class="form-group" style="width: 100%;">
+                    <label for="orgEmail" style="font-weight: 600; margin-bottom: 8px; display: block; color: #333;">Email</label>
+                    <input type="email" id="orgEmail" name="email" placeholder="company@mail.ru" 
+                           style="width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+                
+                <div class="form-group" style="width: 100%;">
+                    <label for="orgMessage" style="font-weight: 600; margin-bottom: 8px; display: block; color: #333;">Краткое описание задачи</label>
+                    <textarea id="orgMessage" name="message" placeholder="Опишите, какая услуга вас интересует, площадь объекта и т.д." rows="4"
+                              style="width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--block" style="padding: 16px; font-size: 1.2rem; font-weight: 700; background: #0c8346; color: white; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; margin-top: 10px;">
+                    <i class="fas fa-paper-plane"></i> Получить предложение
+                </button>
+                
+                <p class="form-note" style="font-size: 0.9rem; color: #5a6268; text-align: center; margin-top: 15px;">
+                    Нажимая кнопку, вы соглашаетесь с
+                    <button type="button" class="consent-link" data-modal="consent" style="background: none; border: none; color: #0c8346; text-decoration: underline; cursor: pointer; padding: 0; font-size: 0.9rem;">обработкой персональных данных</button>
                 </p>
             </form>
         </div>
@@ -1067,8 +1274,9 @@
     <script src="js/forms.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/web-background.js"></script>
+    <script src="js/data-loader.js?v=1.0"></script>
 
-    <!-- СКРИПТ ДЛЯ ЗВЕЗД РЕЙТИНГА -->
+    <!-- СКРИПТ ДЛЯ ЗВЕЗД РЕЙТИНГА И МОДАЛЬНЫХ ОКОН -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Инициализация звезд рейтинга для формы отзыва
@@ -1177,8 +1385,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
