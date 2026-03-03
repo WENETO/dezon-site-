@@ -1303,3 +1303,33 @@ body.organizations-page,
     color: #ffffff !important;
 }
 
+/* ===== ИСПРАВЛЕНИЕ ТЕКСТА В КАЛЬКУЛЯТОРЕ ===== */
+
+/* Делаем текст в выпадающих списках чёрным */
+#calculator select,
+.calculator select,
+#calculatorForm select,
+select#serviceType,
+select#propertyType {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+#calculator option,
+.calculator option,
+select option {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+/* Исправление для плейсхолдера (выбранного пункта) */
+#calculator select:invalid,
+.calculator select:invalid,
+select:required:invalid {
+    color: #000000 !important;
+}
+
+/* Если select не выбран, но нужно показать текст */
+select option[value=""][disabled] {
+    color: #000000 !important;
+}
