@@ -367,7 +367,8 @@
             <h2 class="section-title text-center animate-on-scroll" data-animation="fadeInUp">
                 <span style="color: white">Наши</span> <span style="color: white">услуги</span>
             </h2>
-            <p class="section-subtitle text-center animate-on-scroll" data-animation="fadeInUp" data-delay="200">
+            <!-- ИСПРАВЛЕННЫЙ ТЕКСТ - белый и крупнее -->
+            <p class="section-subtitle text-center animate-on-scroll" data-animation="fadeInUp" data-delay="200" style="color: #ffffff !important; font-size: 1.3rem; font-weight: 500; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
                 Комплексное решение проблем с вредителями любой сложности
             </p>
             <div class="services-widgets">
@@ -484,6 +485,7 @@
             <h2 class="section-title text-center animate-on-scroll" data-animation="fadeInUp">
                 <span style="color: white">Как мы</span> <span style="color: white">работаем</span>
             </h2>
+            <!-- ИСПРАВЛЕННЫЙ БЛОК - без иконок -->
             <div class="process-timeline">
                 <div class="process-step animate-on-scroll" data-animation="slideInLeft">
                     <div class="step-number">
@@ -493,10 +495,9 @@
                         <h3 class="step-title">Заявка или звонок</h3>
                         <p class="step-desc">Оставляете заявку на сайте или звоните нам. Менеджер уточняет детали за 5 минут.</p>
                     </div>
-                    <div class="step-icon">
-                        <i class="fas fa-phone-volume"></i>
-                    </div>
+                    <!-- Иконка удалена -->
                 </div>
+                
                 <div class="process-step animate-on-scroll" data-animation="slideInRight">
                     <div class="step-number">
                         <span>02</span>
@@ -505,10 +506,9 @@
                         <h3 class="step-title">Бесплатный выезд</h3>
                         <p class="step-desc">Специалист приезжает в течение 1 часа для оценки проблемы и расчета стоимости.</p>
                     </div>
-                    <div class="step-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
+                    <!-- Иконка удалена -->
                 </div>
+                
                 <div class="process-step animate-on-scroll" data-animation="slideInLeft">
                     <div class="step-number">
                         <span>03</span>
@@ -517,10 +517,9 @@
                         <h3 class="step-title">Профессиональная обработка</h3>
                         <p class="step-desc">Проводим обработку современным оборудованием и безопасными препаратами.</p>
                     </div>
-                    <div class="step-icon">
-                        <i class="fas fa-spray-can"></i>
-                    </div>
+                    <!-- Иконка удалена -->
                 </div>
+                
                 <div class="process-step animate-on-scroll" data-animation="slideInRight">
                     <div class="step-number">
                         <span>04</span>
@@ -529,16 +528,14 @@
                         <h3 class="step-title">Гарантия результата</h3>
                         <p class="step-desc">Подписываем договор с гарантией до 1 года. Контрольный выезд при необходимости.</p>
                     </div>
-                    <div class="step-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
+                    <!-- Иконка удалена -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР СТОИМОСТИ (ИСПРАВЛЕННЫЙ) -->
-    <section id="calculator" class="calculator">
+    <!-- Калькулятор стоимости (СКРЫТ НА ГЛАВНОЙ) -->
+    <section id="calculator" class="calculator" style="display: none;">
         <div class="container">
             <h2 class="section-title text-center animate-on-scroll" data-animation="fadeInUp">
                 Калькулятор <span class="text-gradient">стоимости</span>
@@ -1368,6 +1365,6 @@
             });
         });
     </script>
-    <script src="js/data-loader.js?v=1.0"></script>
+    <script src="js/admin-loader.js?v=1.0"></script>
 </body>
 </html>
