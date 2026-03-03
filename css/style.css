@@ -1333,3 +1333,61 @@ select:required:invalid {
 select option[value=""][disabled] {
     color: #000000 !important;
 }
+
+/* ===== ИСПРАВЛЕНИЕ ДЛЯ РАЗДЕЛА "КАК МЫ РАБОТАЕМ" ПОСЛЕ УДАЛЕНИЯ ИКОНОК ===== */
+.process-step {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+    align-items: center;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-right: 30px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 5px rgba(12, 131, 70, 0.2);
+}
+
+.step-content {
+    flex: 1;
+    background: #ffffff !important;
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(12, 131, 70, 0.1);
+}
+
+@media (max-width: 768px) {
+    .process-timeline:before {
+        left: 25px;
+    }
+    
+    .process-step {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-right: 15px;
+        margin-left: 0;
+    }
+    
+    .step-content {
+        width: calc(100% - 55px);
+    }
+}
