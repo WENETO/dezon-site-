@@ -2,21 +2,43 @@
 
 // Базывые цены для расчета
 const basePrices = {
+    // Существующие услуги
     cockroach: { flat: 1800, house: 2500, office: 2200, cafe: 3000, warehouse: 3500 },
     bedbug: { flat: 2500, house: 3200, office: 2800, cafe: 3800, warehouse: 4200 },
     rodent: { flat: 2200, house: 3500, office: 3000, cafe: 4000, warehouse: 4500 },
     disinfection: { flat: 2000, house: 2800, office: 2500, cafe: 3500, warehouse: 4000 },
-    complex: { flat: 3500, house: 5000, office: 4200, cafe: 5500, warehouse: 6000 }
+    complex: { flat: 3500, house: 5000, office: 4200, cafe: 5500, warehouse: 6000 },
+    
+    // НОВЫЕ УСЛУГИ
+    disinsection: { flat: 1800, house: 2500, office: 2200, cafe: 3000, warehouse: 3500 },
+    deratization: { flat: 2200, house: 3500, office: 3000, cafe: 4000, warehouse: 4500 },
+    acaricidal: { flat: 0, house: 0, office: 0, cafe: 0, warehouse: 0 }, // Для участка, расчёт по соткам
+    demercurization: { flat: 4000, house: 5500, office: 8000, cafe: 10000, warehouse: 15000 },
+    odor_removal: { flat: 3000, house: 5000, office: 4000, cafe: 6000, warehouse: 8000 },
+    cleaning: { flat: 5000, house: 8000, office: 6000, cafe: 10000, warehouse: 15000 }
 };
 
 const propertyTypeMap = { flat: 'flat', house: 'house', office: 'office', cafe: 'cafe', warehouse: 'warehouse' };
+
+// Человеческие названия для услуг (все)
 const serviceNames = {
+    // Существующие
     cockroach: 'Уничтожение тараканов',
     bedbug: 'Уничтожение клопов',
     rodent: 'Уничтожение грызунов',
     disinfection: 'Дезинфекция помещений',
-    complex: 'Комплексная обработка'
+    complex: 'Комплексная обработка',
+    
+    // НОВЫЕ
+    disinsection: 'Дезинсекция',
+    deratization: 'Дератизация',
+    acaricidal: 'Акарицидная обработка',
+    demercurization: 'Демиркуризация',
+    odor_removal: 'Уничтожение запахов',
+    cleaning: 'Клининговые услуги'
 };
+
+// Человеческие названия для объектов
 const propertyNames = {
     flat: 'Квартира',
     house: 'Частный дом',
@@ -24,6 +46,8 @@ const propertyNames = {
     cafe: 'Кафе/ресторан',
     warehouse: 'Склад/производство'
 };
+
+// Человеческие названия для опций
 const optionNames = {
     urgent: 'Срочный выезд (+20%)',
     strengthened: 'Усиленная защита (+15%)',
@@ -31,8 +55,13 @@ const optionNames = {
     odorless: 'Препараты без запаха (+20%)',
     sticker: 'Наклейка сеточки от тараканов (+5%)'
 };
+
 const optionMultipliers = {
-    urgent: 1.2, strengthened: 1.15, barrier: 1.2, odorless: 1.2, sticker: 1.05
+    urgent: 1.2, 
+    strengthened: 1.15, 
+    barrier: 1.2, 
+    odorless: 1.2, 
+    sticker: 1.05
 };
 
 // Инициализация калькулятора
@@ -52,23 +81,11 @@ function initCalculator() {
     
     console.log('Калькулятор инициализирован');
     
-    // Обновление значения площади (ИСПРАВЛЕНО!)
+    // Обновление значения площади
     if (areaRange && areaValue) {
-        // Устанавливаем начальное значение
-        areaValue.textContent = areaRange.value + ' м²';
-        
-        // Обновляем при движении ползунка
         areaRange.addEventListener('input', function() {
             areaValue.textContent = this.value + ' м²';
-            calculatePrice(); // Пересчитываем цену
-            
-            // Анимация
-            areaValue.style.transform = 'scale(1.2)';
-            areaValue.style.color = '#ff9800';
-            setTimeout(() => {
-                areaValue.style.transform = 'scale(1)';
-                areaValue.style.color = '#ffffff';
-            }, 300);
+            calculatePrice();
         });
     }
     
@@ -96,6 +113,18 @@ function initCalculator() {
             }
         });
     });
+    
+    // Анимация для ползунка
+    if (areaRange && areaValue) {
+        areaRange.addEventListener('input', function() {
+            areaValue.style.transform = 'scale(1.2)';
+            areaValue.style.color = '#ff9800';
+            setTimeout(() => {
+                areaValue.style.transform = 'scale(1)';
+                areaValue.style.color = '#ffffff';
+            }, 300);
+        });
+    }
     
     // Обработка отправки формы калькулятора
     calculatorForm.addEventListener('submit', function(e) {
@@ -131,8 +160,22 @@ function calculatePrice() {
         return;
     }
     
-    let basePrice = basePrices[serviceType] ? basePrices[serviceType][propertyKey] : 2000;
+    // Базовая цена
+    let basePrice = 0;
     
+    // Особый расчёт для акарицидной обработки (по соткам)
+    if (serviceType === 'acaricidal') {
+        // Для участка цена за сотку, умножаем на площадь (в сотках)
+        const pricePerSotka = 1500; // базовая цена за сотку
+        const sotki = Math.ceil(area / 100); // переводим м² в сотки (примерно)
+        basePrice = pricePerSotka * Math.max(sotki, 6); // минимум 6 соток
+    } 
+    // Для остальных услуг
+    else {
+        basePrice = basePrices[serviceType] ? basePrices[serviceType][propertyKey] : 2000;
+    }
+    
+    // Модификатор площади
     let areaMultiplier = 1;
     if (area > 100) areaMultiplier = 1.2;
     if (area > 200) areaMultiplier = 1.5;
@@ -141,6 +184,7 @@ function calculatePrice() {
     
     let total = basePrice * areaMultiplier;
     
+    // Добавка за опции
     checkboxes.forEach(checkbox => {
         if (optionMultipliers[checkbox.value]) {
             total *= optionMultipliers[checkbox.value];
@@ -149,6 +193,14 @@ function calculatePrice() {
     
     const formattedPrice = Math.round(total).toLocaleString('ru-RU');
     totalPriceElement.textContent = formattedPrice + ' ₽';
+    
+    // Анимация изменения цены
+    totalPriceElement.style.transform = 'scale(1.1)';
+    totalPriceElement.style.color = '#ff9800';
+    setTimeout(() => {
+        totalPriceElement.style.transform = 'scale(1)';
+        totalPriceElement.style.color = '#ff9800';
+    }, 300);
     
     if (savingsAmount) {
         const savings = Math.round(total * 0.1);
@@ -224,8 +276,14 @@ function handleCalculatorSubmit() {
     }
 }
 
+// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     initCalculator();
 });
 
-window.Calculator = { initCalculator, calculatePrice, handleCalculatorSubmit };
+// Экспорт функций
+window.Calculator = { 
+    initCalculator, 
+    calculatePrice, 
+    handleCalculatorSubmit 
+};
