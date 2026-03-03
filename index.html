@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Профессиональная дезинсекция и дератизация | DEZ-ONE</title>
     <meta name="description" content="Уничтожение тараканов, клопов, грызунов. Гарантия 1 год. Работаем 24/7. Бесплатный выезд и осмотр.">
     <link rel="stylesheet" href="css/style.css?v=5.0">
@@ -530,6 +531,134 @@
                     </div>
                     <div class="step-icon">
                         <i class="fas fa-file-contract"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАЛЬКУЛЯТОР СТОИМОСТИ (ИСПРАВЛЕННЫЙ) -->
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll" data-animation="fadeInUp">
+                Калькулятор <span class="text-gradient">стоимости</span>
+            </h2>
+            <p class="section-subtitle text-center animate-on-scroll" data-animation="fadeInUp" data-delay="200">
+                Рассчитайте примерную стоимость обработки за 1 минуту
+            </p>
+            
+            <div class="calculator__wrapper">
+                <form id="calculatorForm" class="calculator-form">
+                    <div class="form-group animate-on-scroll" data-animation="fadeInLeft">
+                        <label for="serviceType"><i class="fas fa-tools"></i> Тип услуги</label>
+                        <select id="serviceType" name="serviceType" required class="select-animated" style="color: #000000 !important; background-color: #ffffff !important;">
+                            <option value="" disabled selected style="color: #000000 !important;">Выберите услугу</option>
+                            <option value="disinsection" style="color: #000000 !important;">Дезинсекция</option>
+                            <option value="deratization" style="color: #000000 !important;">Дератизация</option>
+                            <option value="cockroach" style="color: #000000 !important;">Уничтожение тараканов</option>
+                            <option value="bedbug" style="color: #000000 !important;">Уничтожение клопов</option>
+                            <option value="rodent" style="color: #000000 !important;">Уничтожение грызунов</option>
+                            <option value="disinfection" style="color: #000000 !important;">Дезинфекция помещений</option>
+                            <option value="complex" style="color: #000000 !important;">Комплексная обработка</option>
+                            <option value="acaricidal" style="color: #000000 !important;">Акарицидная обработка</option>
+                            <option value="demercurization" style="color: #000000 !important;">Демиркуризация</option>
+                            <option value="odor_removal" style="color: #000000 !important;">Уничтожение запахов</option>
+                            <option value="cleaning" style="color: #000000 !important;">Клининговые услуги</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group animate-on-scroll" data-animation="fadeInLeft" data-delay="100">
+                        <label for="propertyType"><i class="fas fa-building"></i> Тип объекта</label>
+                        <select id="propertyType" name="propertyType" required class="select-animated" style="color: #000000 !important; background-color: #ffffff !important;">
+                            <option value="" disabled selected style="color: #000000 !important;">Выберите объект</option>
+                            <option value="flat" style="color: #000000 !important;">Квартира</option>
+                            <option value="house" style="color: #000000 !important;">Частный дом</option>
+                            <option value="office" style="color: #000000 !important;">Офис</option>
+                            <option value="cafe" style="color: #000000 !important;">Кафе/ресторан</option>
+                            <option value="warehouse" style="color: #000000 !important;">Склад/производство</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group animate-on-scroll" data-animation="fadeInLeft" data-delay="200">
+                        <label for="area"><i class="fas fa-ruler-combined"></i> Площадь (м²)</label>
+                        <div class="range-container">
+                            <input type="range" id="area" name="area" min="10" max="500" value="50" step="10" class="range-slider">
+                            <div class="range-value">
+                                <span id="areaValue">50 м²</span>
+                                <span class="range-hint">(двигайте ползунок)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group animate-on-scroll" data-animation="fadeInLeft" data-delay="300">
+                        <label><i class="fas fa-plus-circle"></i> Дополнительные опции</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox checkbox-modern">
+                                <input type="checkbox" name="options" value="urgent">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Срочный выезд (в течении 2 часов) +20%</span>
+                            </label>
+                            <label class="checkbox checkbox-modern">
+                                <input type="checkbox" name="options" value="strengthened">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Усиленная защита +15%</span>
+                            </label>
+                            <label class="checkbox checkbox-modern">
+                                <input type="checkbox" name="options" value="barrier">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Барьерная защита +20%</span>
+                            </label>
+                            <label class="checkbox checkbox-modern">
+                                <input type="checkbox" name="options" value="odorless">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Препараты без запаха +20%</span>
+                            </label>
+                            <label class="checkbox checkbox-modern">
+                                <input type="checkbox" name="options" value="sticker">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Наклейка сеточки от тараканов +5%</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator__result animate-on-scroll" data-animation="zoomIn">
+                        <div class="result-label">Примерная стоимость:</div>
+                        <div class="result-price" id="totalPrice">2 500 ₽</div>
+                        <div class="result-note">*Точную стоимость уточнит специалист после бесплатного выезда</div>
+                        <div class="result-savings">
+                            <i class="fas fa-piggy-bank"></i> Экономия при онлайн-заказе: <span class="savings-amount">300 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--block btn-pulse animate-on-scroll" data-animation="fadeInUp">
+                        <i class="fas fa-paper-plane"></i> Оставить заявку с этой ценой
+                    </button>
+                </form>
+                
+                <div class="calculator__info animate-on-scroll" data-animation="fadeInRight">
+                    <h3 class="info-title"><i class="fas fa-check-circle"></i> Что входит в стоимость?</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check"></i> Выезд специалиста на объект</li>
+                        <li><i class="fas fa-check"></i> Осмотр и консультация</li>
+                        <li><i class="fas fa-check"></i> Профессиональные препараты</li>
+                        <li><i class="fas fa-check"></i> Работа специалиста с оборудованием</li>
+                        <li><i class="fas fa-check"></i> Рекомендации по профилактике</li>
+                        <li><i class="fas fa-check"></i> Гарантия в договоре</li>
+                    </ul>
+                    
+                    <div class="info-tip">
+                        <div class="tip-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="tip-content">
+                            <strong>Выгодно:</strong> При заказе комплексной обработки скидка 15% на последующие услуги.
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; text-align: center;">
+                        <a href="client-memo.html" class="btn btn--secondary" style="display: inline-block; padding: 12px 20px; font-size: 0.9rem; background: #ff9800; color: #000000;">
+                            <i class="fas fa-file-alt"></i> Ознакомиться с памяткой клиенту
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1239,9 +1368,6 @@
             });
         });
     </script>
+    <script src="js/data-loader.js?v=1.0"></script>
 </body>
-
 </html>
-
-
-
